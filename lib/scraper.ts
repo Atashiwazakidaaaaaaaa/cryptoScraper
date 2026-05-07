@@ -10,18 +10,22 @@ export interface CryptoData {
 }
 
 export async function scrapeCryptoData(): Promise<CryptoData[]> {
-  const isLocal = process.env.NODE_ENV === 'development' || !process.env.VERCEL;
+  // More robust check for Vercel vs Local
+  const isLocal = !process.env.VERCEL && !process.env.AWS_LAMBDA_FUNCTION_NAME;
   
   let browser;
   
   try {
-    browser = await playwright.launch({
+    const launchOptions = {
       args: isLocal ? [] : chromium.args,
       executablePath: isLocal 
-        ? undefined // Playwright will find local browser
+        ? undefined 
         : await chromium.executablePath(),
-      headless: true,
-    });
+      headless: isLocal ? true : chromium.headless,
+    };
+
+    console.log(`Launching browser (Local: ${isLocal})...`);
+    browser = await playwright.launch(launchOptions);
 
     const page = await browser.newPage();
     
