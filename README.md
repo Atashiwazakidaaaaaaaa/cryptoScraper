@@ -1,22 +1,3 @@
-# 🪙 Serverless Crypto Scraper
-
-A high-performance, serverless cryptocurrency price tracker built with **Node.js**, **Playwright**, and **Vercel**. It automatically scrapes market data, stores it in **Supabase**, and sends real-time alerts to **Discord**.
-
-## 🚀 Features
-- **Automated Scraping**: Daily cron jobs via Vercel.
-- **Dynamic Content Handling**: Uses Playwright to handle modern, JavaScript-heavy sites.
-- **Historical Tracking**: PostgreSQL database via Supabase.
-- **Push Notifications**: Beautiful Discord embed alerts.
-- **TypeScript**: Fully typed for reliability.
-
-## 🛠 Tech Stack
-- **Runtime**: Node.js 20+ (TypeScript)
-- **Engine**: Playwright + @sparticuz/chromium
-- **Cloud**: Vercel Serverless Functions
-- **Database**: Supabase (PostgreSQL)
-- **Alerts**: Discord Webhooks
-
-## 📦 Setup & Deployment
 
 1. **Clone the repo**:
    ```bash
@@ -49,6 +30,3 @@ Run the scraper once locally:
 ```bash
 npm run scrape:local
 ```
-
----
-Built with ❤️ by [Your Name]
